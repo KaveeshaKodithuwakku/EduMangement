@@ -28,7 +28,7 @@ public class LoginFormController {
     public void forgotPasswordOnAction(ActionEvent actionEvent) {
     }
 
-    public void loginOnAction(ActionEvent actionEvent) {
+    public void loginOnAction(ActionEvent actionEvent) throws IOException {
         String email = txtEmail.getText().toLowerCase();
         String password = txtPassword.getText().trim();
 
@@ -55,6 +55,7 @@ public class LoginFormController {
             //Check pw
             if(new PasswordManager().checkPassword(password,selectedUser.get().getPassword())){
                 System.out.println(selectedUser.get().toString());
+                setUi("DashBoardForm");
             }else {
                 new Alert(Alert.AlertType.WARNING,String.format("Wrong Password")).show();
             }
