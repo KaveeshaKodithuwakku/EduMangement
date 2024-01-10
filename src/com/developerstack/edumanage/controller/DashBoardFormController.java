@@ -62,4 +62,8 @@ public class DashBoardFormController {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/" + location + ".fxml"))));
         stage.centerOnScreen();
     }
+
+    public void openStudentFormOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("StudentForm");
+    }
 }
