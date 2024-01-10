@@ -20,7 +20,7 @@
          </font>
       </Label>
       <Separator layoutX="15.0" layoutY="49.0" prefHeight="3.0" prefWidth="662.0" />
-      <Button layoutX="588.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #1D2238;" text="Back to home" textFill="WHITE">
+      <Button layoutX="588.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #1D2238;" text="Back to home" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -34,7 +34,7 @@
       <TextField fx:id="txtName" layoutX="182.0" layoutY="62.0" promptText="Full Name" />
       <DatePicker fx:id="txtDob" layoutX="338.0" layoutY="62.0" promptText="Date Of Birth" />
       <TextField fx:id="txtAddress" layoutX="528.0" layoutY="62.0" promptText="Address" />
-      <TextField layoutX="21.0" layoutY="99.0" prefHeight="25.0" prefWidth="489.0" promptText="Search Here ......." />
+      <TextField fx:id="txtSearch" layoutX="21.0" layoutY="99.0" prefHeight="25.0" prefWidth="489.0" promptText="Search Here ......." />
       <Button fx:id="btnSave" layoutX="528.0" layoutY="99.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #1A84D0;" text="Save Student" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
