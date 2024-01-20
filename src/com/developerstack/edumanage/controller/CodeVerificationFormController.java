@@ -16,7 +16,6 @@ public class CodeVerificationFormController {
     public AnchorPane context;
     public TextField txtCode;
     public Label txtSelectedEmail;
-
     int code =0;
     String selectedEmail = "";
 

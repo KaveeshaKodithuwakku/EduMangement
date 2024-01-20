@@ -75,6 +75,11 @@ public class DashBoardFormController {
         setUi("ProgramForm");
     }
 
-    public void openIntakeOnAction(ActionEvent actionEvent) {
+    public void openIntakeOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("IntakeForm");
+    }
+
+    public void OpenRegistrationOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("RegistrationForm");
     }
 }

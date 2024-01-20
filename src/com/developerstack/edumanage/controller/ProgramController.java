@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -45,7 +46,6 @@ public class ProgramController {
     ArrayList<String> teacherList = new ArrayList<>();
 
     ObservableList<TechAddTM> tmList = FXCollections.observableArrayList();
-
     String searchText = "";
 
     public void initialize(){
@@ -70,7 +70,6 @@ public class ProgramController {
                 .addListener((observable, oldValue, newValue) -> {
                     selectedTeacher = newValue.toString();
                 });
-
     }
 
     private void setProgramId() {
@@ -89,10 +88,8 @@ public class ProgramController {
         }
     }
 
-
-
     public void saveOnAction(ActionEvent actionEvent) {
-        ObservableList<Program> obList = FXCollections.observableArrayList();
+
         String[] selectedTechnology = new String[tmList.size()];
         int pointer = 0;
 
@@ -129,8 +126,7 @@ public class ProgramController {
 
             selectedProgram.get().setName(txtName.getText());
             selectedProgram.get().setCost(Double.parseDouble(txtCost.getText()));
-            selectedProgram.get().setTeacher("");
-            //selectedProgram.get().setTechnologies();
+            selectedProgram.get().setTeacher(selectedTeacher);
 
             setProgramId();
             clear();
@@ -142,6 +138,7 @@ public class ProgramController {
 
     private void setTableData(String searchText) {
         ObservableList<ProgramTM> obList = FXCollections.observableArrayList();
+
         for(Program program: Database.programTable){
 
             if(program.getName().contains(searchText)){
@@ -154,6 +151,19 @@ public class ProgramController {
                        program.getTeacher(),
                         btnTech,
                         btnRemove);
+
+                btnTech.setOnAction(e -> {
+                   try{
+                       FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/TechnologyForm.fxml"));
+                       Parent parent = fxmlLoader.load();
+                       TechnologyFormController controller = fxmlLoader.getController();
+                       controller.setData(tmList);
+                       Stage stage = (Stage) context.getScene().getWindow();
+                       stage.setScene(new Scene(parent));
+                   } catch (IOException ex) {
+                       throw new RuntimeException(ex);
+                   }
+                });
 
                 btnRemove.setOnAction(e -> {
                     Alert alert = new Alert(
@@ -235,7 +245,6 @@ public class ProgramController {
         }
         return false;
     }
-
 
 
 }
